@@ -2,6 +2,7 @@
 <.simple_form :let={f} for={@changeset} action={~p"/users"}>
   <.input field={f[:name]} label="Name"/>
   <.input field={f[:username]} label="Username"/>
+  <.input field={f[:password]} label="Password"/>
   <:actions>
     <.button>Save</.button>
   </:actions>
