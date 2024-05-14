@@ -1,0 +1,15 @@
+<h1 class="font-semibold pb-10 text-3xl">Showing Users</h1>
+<table>
+<tr>
+<td>User Id </td>
+<td class="px-6">Name</td>
+<td class="px-6">Username</td>
+</tr>
+<tr>
+<td><%= @user.id %> </td>
+<td class="px-6"><%= @user.name %></td>
+<td class="px-6"><%= @user.username %></td>
+</tr>
+</table>
+<div class="mt-5"><a href={~p"/users"} class="underline">Back</a></div>
+      

@@ -1,0 +1,12 @@
+<h1 class="font-semibold font-6px mb-6 text-3xl">Listing Users</h1>
+
+<table>
+
+<%= for u <- @users do %>
+<tr> 
+    <td> <%= u.name %> (<%= u.id %>)</td> 
+    <td> <a href={~p"/users/#{u.id}"} class="underline">View</a> </td>
+</tr>
+<% end %>
+
+</table>
