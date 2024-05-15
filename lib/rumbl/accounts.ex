@@ -2,7 +2,7 @@ defmodule Rumbl.Accounts do
   @moduledoc """
   The Accounts context
   """
-  alias Rumbl.Accounts.User
+  alias Rumbl.Accounts.{User, Session}
   alias Rumbl.Repo
 
   def list_users do
@@ -35,9 +35,26 @@ defmodule Rumbl.Accounts do
     User.registration_changeset(user, params)
   end
 
+  def change_login(%Session{} = session, params \\ %{}) do
+    Session.changeset(session, params)
+  end
+
   def register_user(attrs) do
     %User{}
     |> User.registration_changeset(attrs)
     |> Repo.insert
+  end
+
+  def authenticate(username, password) do
+    user = get_user_by(username: username)
+
+    cond do
+      user && Bcrypt.verify_pass(password, user.password_hash) ->
+        {:ok, user}
+      user ->
+        {:error, :unauthorized}
+      true ->
+        {:error, :not_found}
+    end
   end
 end

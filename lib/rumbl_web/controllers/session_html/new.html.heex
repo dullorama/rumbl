@@ -1,0 +1,8 @@
+<h1>Login User</h1>
+<.simple_form :let={f} for={@changeset} action={~p"/sessions"}>
+  <.input field={f[:username]} label="Username"/>
+  <.input field={f[:password]} label="Password"/>
+  <:actions>
+    <.button>Login</.button>
+  </:actions>
+</.simple_form>
